@@ -1,13 +1,11 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'MMToast_Example' do
   pod 'MMToast', :path => '../'
 
   target 'MMToast_Tests' do
     inherit! :search_paths
-
-    
   end
 end

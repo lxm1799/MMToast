@@ -1,0 +1,6 @@
+framework module MMToast {
+  umbrella header "MMToast-umbrella.h"
+
+  export *
+  module * { export * }
+}

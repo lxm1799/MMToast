@@ -1,0 +1,16 @@
+PODS:
+  - MMToast (0.1.0)
+
+DEPENDENCIES:
+  - MMToast (from `../`)
+
+EXTERNAL SOURCES:
+  MMToast:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MMToast: 99981c072df9ade3e5f7b81b8d871d384782df5f
+
+PODFILE CHECKSUM: 01eae189775b21a83fa54435d3552ec9c3552948
+
+COCOAPODS: 1.11.0
