@@ -10,11 +10,11 @@ Pod::Spec.new do |s|
   s.name             = 'MMToast'
   s.version          = '0.1.0'
   s.summary          = '一款超级简单的swift的toast库'
-  s.homepage         = 'https://github.com/luckyBoy/MMToast'
+  s.homepage         = 'https://github.com/lxm1799/MMToast'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'luckyBoy' => 'goodlucky1130@163.com' }
-  s.source           = { :git => 'https://github.com/luckyBoy/MMToast.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/lxm1799/MMToast.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.swift_version = '5.0'
