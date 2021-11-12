@@ -25,6 +25,52 @@ pod 'MMToast'
 
 ## Usage
 
+
+### Prepare
+
+```
+
+///主要方法
+public struct MMToast{
+    
+    ///展示toast
+    public static func showToast(model:MMToastConfig){
+        MMToastView.show(config: model)
+    }
+    
+    ///菊花圈，不会自动隐藏
+    public static func showLoading(){
+        let model = MMToastConfig.init(type: .loading)
+        MMToastView.show(config: model)
+    }
+    
+    
+    ///定时隐藏所有taost
+    public static func autoHide(duration:TimeInterval = 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            MMToast.hideAll()
+        }
+    }
+    
+    
+    ///隐藏所有taost
+    public static func hideAll(){
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            let views = MMCurrentView?.subviews ?? [UIView]()
+            _ = views.compactMap({ view in
+                if view.isMember(of: MMToastView.self) {
+                    view.removeFromSuperview()
+                }
+            })
+        }
+    }
+}
+```
+
+
+### Quick Start
+
+
 ```swift
 import MMToast
 
