@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-      
         let btnSize:CGSize = .init(width: 80, height: 40)
         let top:CGFloat = 100
         let left:CGFloat = 10

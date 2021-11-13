@@ -11,7 +11,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 - iOS 10.0
-- Xcode 13.0+
 - Swift 5.0
 
 ## Installation
@@ -23,53 +22,46 @@ it, simply add the following line to your Podfile:
 pod 'MMToast'
 ```
 
+
+##Preview
+| 效果  | 预览图 |
+![菊花圈](https://github.com/lxm1799/MMToast/blob/master/pic/juhua.png)
+![操作成功](https://github.com/lxm1799/MMToast/blob/master/pic/success.png)
+![操作失败](https://github.com/lxm1799/MMToast/blob/master/pic/error.png)
+![警告](https://github.com/lxm1799/MMToast/blob/master/pic/waring.png)
+![纯文本](https://github.com/lxm1799/MMToast/blob/master/pic/text.png)
+
 ## Usage
 
-
-### Prepare
-
 ```
+import 'MMToast'
 
-///主要方法
-public struct MMToast{
-    
-    ///展示toast
-    public static func showToast(model:MMToastConfig){
-        MMToastView.show(config: model)
-    }
-    
-    ///菊花圈，不会自动隐藏
-    public static func showLoading(){
-        let model = MMToastConfig.init(type: .loading)
-        MMToastView.show(config: model)
-    }
-    
-    
-    ///定时隐藏所有taost
-    public static func autoHide(duration:TimeInterval = 2) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            MMToast.hideAll()
-        }
-    }
-    
-    
-    ///隐藏所有taost
-    public static func hideAll(){
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            let views = MMCurrentView?.subviews ?? [UIView]()
-            _ = views.compactMap({ view in
-                if view.isMember(of: MMToastView.self) {
-                    view.removeFromSuperview()
-                }
-            })
-        }
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        ///显示菊花圈
+        MMToast.showLoading()
+        ///显示纯文本,默认2s关闭
+        MMToast.showText(text: "操作成功")
+        ///关闭所有toast
+        MMToast.hideAll()
+        ///2s自动隐藏
+        MMToast.autoHide(duration: 2)
+        
+        
+        ///根据项目需求配置，下面介绍中有配置示范
+        var model = MMToastConfig.init(type: .loading)
+        model.iconName = "toast_success"
+        model.text = "操作成功"
+        MMToast.showToast(model: model)
+        
     }
 }
-```
 
 
 ### Quick Start
-
 
 ```swift
 import MMToast
@@ -141,9 +133,77 @@ extension UIColor {
 }
 ```
 
-## Author
 
-luckyBoy, goodlucky1130@163.com
+
+
+### Main Class 
+
+
+```
+///目前支持3种样式
+public enum MMToastType {
+    ///菊花
+    case loading
+    ///纯文字tip
+    case text
+    ///icon+文字的tip
+    case iconAndText
+}
+
+
+
+//MARK: -MMToast的配置属性
+public struct MMToastConfig{
+    
+    public init(type:MMToastType) {
+        self.type = type
+    }
+    ///显示类型
+    public var type:MMToastType
+    ///是否可以交互，默认true
+    public var isUserInteractionEnabled:Bool = true
+    ///默认自动关闭时间2秒（非loading有效）
+    public var autoHideDuration:TimeInterval = 2
+    ///是否定时隐藏（非loading有效）
+    public var isAutoHide = true
+    ///背景大小,默认100
+    public var bgSize:CGSize = .init(width: 100, height: 100)
+    ///背景颜色
+    public var bgColor:UIColor = .init(red: 0, green: 0, blue: 0, alpha: 0.45)
+    ///切角默认8
+    public var cornerRadius:CGFloat = 8
+    ///菊花圈颜色
+    public var loadingColor:UIColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+    
+    ///图片的配置，没有则不显示
+    public var iconName:String?
+    ///默认根据image大小展示，如果设置，则根据iconSize的值来设置
+    public var iconSize:CGSize?
+    
+
+    
+    
+    ///文字的配置
+    public var text:String?
+    ///文字默认居中展示
+    public var textAlignment:NSTextAlignment = .center
+    ///文字大小，默认系统12
+    public var font:UIFont = UIFont.systemFont(ofSize: 12)
+    ///字体颜色，默认白色
+    public var textColor:UIColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+    ///纯文字时候才会生效
+    public var textBgColor:UIColor = .init(red: 0, green: 0, blue: 0, alpha: 0.45)
+    ///设置文字距离屏幕的左右间距（针对纯文字有效）
+    public var textMargin:CGFloat = 60
+    ///设置text与icon的上下间距
+    public var textAndIconMargin:CGFloat = 10
+    ///文字高度 = 文字本身高度+textExtraHeight（纯文字下为了设置圆角）
+    public var textExtraHeight:CGFloat = 10
+}
+
+
+
+
 
 ## License
 
