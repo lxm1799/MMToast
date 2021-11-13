@@ -25,11 +25,7 @@ pod 'MMToast'
 
 ##Preview
 | 效果  | 预览图 |
-![菊花圈](https://github.com/lxm1799/MMToast/blob/master/pic/juhua.png)
-![操作成功](https://github.com/lxm1799/MMToast/blob/master/pic/success.png)
-![操作失败](https://github.com/lxm1799/MMToast/blob/master/pic/error.png)
-![警告](https://github.com/lxm1799/MMToast/blob/master/pic/waring.png)
-![纯文本](https://github.com/lxm1799/MMToast/blob/master/pic/text.png)
+![gif图](https://github.com/lxm1799/MMToast/blob/master/pic/pic123.gif)
 
 ## Usage
 
