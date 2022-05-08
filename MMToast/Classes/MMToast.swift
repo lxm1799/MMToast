@@ -10,11 +10,6 @@ import UIKit
 
 ///当前控制器的view
 private let MMCurrentView = UIApplication.shared.windows.last
-///设备最大宽度
-private let MMMaxWidth:CGFloat = UIScreen.main.bounds.width
-///设备最大高度
-private let MMMaxHeight:CGFloat = UIScreen.main.bounds.height
-
 
 public struct MMToast{
     
@@ -131,6 +126,10 @@ fileprivate class MMToastView:UIView{
     
     //初始化方法
     private var config:MMToastConfig!
+    ///设备最大宽度
+    private var MMMaxWidth:CGFloat = UIScreen.main.bounds.width
+    ///设备最大高度
+    private var MMMaxHeight:CGFloat = UIScreen.main.bounds.height
     
     private init(config:MMToastConfig) {
         super.init(frame: UIScreen.main.bounds)
