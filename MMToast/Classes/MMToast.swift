@@ -138,9 +138,8 @@ fileprivate class MMToastView:UIView{
         
         isUserInteractionEnabled = config.isUserInteractionEnabled
         if self.isUserInteractionEnabled {
-            let left = (MMMaxWidth - config.bgSize.width)/2
-            let top = (MMMaxHeight - config.bgSize.height)/2
-            self.frame = .init(x: left, y: top, width: config.bgSize.width, height: config.bgSize.height)
+            self.frame = .init(x: 0, y: 0, width: config.bgSize.width, height: config.bgSize.height)
+            self.center = .init(x: MMMaxWidth/2, y: MMMaxHeight/2)
             self.backgroundColor = config.bgColor
             self.layer.cornerRadius = config.cornerRadius
         }else{
