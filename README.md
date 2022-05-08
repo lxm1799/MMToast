@@ -1,4 +1,9 @@
+
+
 # MMToast
+
+#更新记录
+-适配横竖屏
 
 [![CI Status](https://img.shields.io/travis/luckyBoy/MMToast.svg?style=flat)](https://travis-ci.org/luckyBoy/MMToast)
 [![Version](https://img.shields.io/cocoapods/v/MMToast.svg?style=flat)](https://cocoapods.org/pods/MMToast)
